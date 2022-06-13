@@ -1,6 +1,7 @@
 package com.ky.web;
 
-import com.ky.domain.SysTest;
+import com.ky.GlobalReturn.ResultCode;
+import com.ky.GlobalReturn.ResultVo;
 import com.ky.service.ISysTestService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +30,8 @@ public class SysTestController {
      * @return
      */
     @GetMapping("/get")
-    public SysTest test() {
-        return testService.getById(1);
+    public ResultVo test() {
+        return new ResultVo(ResultCode.FAIL, testService.getById(1));
     }
 
 }

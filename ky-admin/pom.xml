@@ -17,10 +17,19 @@
     </properties>
 
     <dependencies>
+
+        <!-- 系统模块 -->
         <dependency>
             <groupId>com.ky</groupId>
             <artifactId>ky-system</artifactId>
         </dependency>
+
+        <!-- 通用模块 -->
+        <dependency>
+            <groupId>com.ky</groupId>
+            <artifactId>ky-common</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
