@@ -43,7 +43,9 @@ public class Generator {
                 })
                 .strategyConfig(builder -> {
                     builder.addInclude("sys_test") // 设置需要生成的表名
-                            .addTablePrefix("t_", "c_"); // 设置过滤表前缀
+                            .addTablePrefix("t_", "c_")
+                            .entityBuilder()
+                            .enableLombok(); // 设置过滤表前缀
                 })
                 .execute();
     }

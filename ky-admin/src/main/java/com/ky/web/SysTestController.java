@@ -1,9 +1,12 @@
 package com.ky.web;
 
-import com.ky.GlobalReturn.ResultCode;
-import com.ky.GlobalReturn.ResultVo;
+import com.ky.domain.SysTest;
+import com.ky.result.ResultVo;
 import com.ky.service.ISysTestService;
-import org.springframework.web.bind.annotation.GetMapping;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import javax.annotation.Resource;
  * @author KY
  * @since 2022-06-09
  */
+@Slf4j
 @RestController
 @RequestMapping("/test")
 public class SysTestController {
@@ -29,9 +33,9 @@ public class SysTestController {
      *
      * @return
      */
-    @GetMapping("/get")
-    public ResultVo test() {
-        return new ResultVo(ResultCode.FAIL, testService.getById(1));
+    @PostMapping("/post")
+    public ResultVo test(@Validated @RequestBody SysTest user) {
+        return new ResultVo(testService.getById(user.getId()));
     }
 
 }

@@ -3,7 +3,11 @@ package com.ky.domain;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -12,8 +16,10 @@ import java.io.Serializable;
  * </p>
  *
  * @author KY
- * @since 2022-06-09
+ * @since 2022-06-14
  */
+@Getter
+@Setter
 @TableName("sys_test")
 public class SysTest implements Serializable {
 
@@ -23,6 +29,8 @@ public class SysTest implements Serializable {
      * 主键ID
      */
     @TableId(value = "id", type = IdType.AUTO)
+    @NotNull(message = "id不能为空")
+    @Max(value = 1, message = "ID最大为1")
     private Integer id;
 
     /**
@@ -36,36 +44,4 @@ public class SysTest implements Serializable {
     private String passWord;
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassWord() {
-        return passWord;
-    }
-
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
-
-    @Override
-    public String toString() {
-        return "SysTest{" +
-                "id=" + id +
-                ", userName=" + userName +
-                ", passWord=" + passWord +
-                "}";
-    }
 }

@@ -1,4 +1,4 @@
-package com.ky.GlobalReturn;
+package com.ky.result;
 
 /**
  * @author: Ky2Fe

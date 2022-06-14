@@ -1,4 +1,4 @@
-package com.ky.GlobalReturn;
+package com.ky.result;
 
 import lombok.Data;
 

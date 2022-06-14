@@ -1,4 +1,4 @@
-package com.ky.GlobalReturn;
+package com.ky.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +18,9 @@ public enum ResultCode implements StatusCode {
     FAIL(1001, "后台错误"),
     ;
 
-    private int code;
+    private final int code;
 
-    private String msg;
+    private final String msg;
 
     @Override
     public int getCode() {
