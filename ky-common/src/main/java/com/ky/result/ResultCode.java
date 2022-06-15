@@ -16,6 +16,8 @@ public enum ResultCode implements StatusCode {
     SUCCESS(200, "成功"),
 
     FAIL(1001, "后台错误"),
+
+    VALID_DATA(1002, "参数校验错误"),
     ;
 
     private final int code;
