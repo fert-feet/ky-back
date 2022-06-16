@@ -2,68 +2,100 @@ package com.ky.result;
 
 import lombok.Data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author: Ky2Fe
  * @program: ky-vue-background
- * @description: 统一返回类
+ * @description: 统一返回类，支持链式调用
  **/
 
 @Data
 public class ResultVo {
 
-    //状态码
+    /**
+     * 状态代码
+     */
     private int code;
 
-    //状态信息
+    /**
+     * 状态信息
+     */
     private String msg;
 
-    //数据
-    private Object data;
+    /**
+     * 数据
+     */
+    private Map<String, Object> data = new HashMap<>();
 
     /**
-     * 自定义状态码，状态信息，数据
+     * 成功返回结果
      *
-     * @param code
-     * @param msg
-     * @param data
+     * @return resultVo
      */
-    public ResultVo(int code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
+    public static ResultVo success() {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(ResultCode.SUCCESS.getCode());
+        resultVo.setMsg(ResultCode.SUCCESS.getMsg());
+        return resultVo;
     }
 
     /**
-     * 自定义数据，返回成功状态
+     * 失败返回结果
      *
-     * @param data
+     * @return resultVo
      */
-    public ResultVo(Object data) {
-        this.code = ResultCode.SUCCESS.getCode();
-        this.msg = ResultCode.SUCCESS.getMsg();
-        this.data = data;
-    }
-
-    /**
-     * 自定义状态码和数据
-     *
-     * @param statusCode
-     * @param data
-     */
-    public ResultVo(StatusCode statusCode, Object data) {
-        this.code = statusCode.getCode();
-        this.msg = statusCode.getMsg();
-        this.data = data;
+    public static ResultVo error() {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(ResultCode.FAIL.getCode());
+        resultVo.setMsg(ResultCode.FAIL.getMsg());
+        return resultVo;
     }
 
     /**
      * 自定义状态码
      *
-     * @param statusCode
+     * @param code
+     * @return this
      */
-    public ResultVo(StatusCode statusCode) {
-        this.code = statusCode.getCode();
-        this.msg = statusCode.getMsg();
-        this.data = null;
+    public ResultVo code(Integer code) {
+        this.setCode(code);
+        return this;
+    }
+
+    /**
+     * 自定义信息
+     *
+     * @param msg
+     * @return this
+     */
+    public ResultVo msg(String msg) {
+        this.setMsg(msg);
+        return this;
+    }
+
+    /**
+     * 自定义状态，使用枚举类里的状态和状态码
+     *
+     * @param status
+     * @return
+     */
+    public ResultVo status(StatusCode status) {
+        this.setMsg(status.getMsg());
+        this.setCode(status.getCode());
+        return this;
+    }
+
+    /**
+     * 自定义数据，支持链式调用
+     *
+     * @param key
+     * @param data
+     * @return this
+     */
+    public ResultVo data(String key, Object data) {
+        this.data.put(key, data);
+        return this;
     }
 }
