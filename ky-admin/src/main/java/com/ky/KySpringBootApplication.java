@@ -14,8 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.ky.mapper")
-public class KYSpringBootApplication {
+public class KySpringBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(KYSpringBootApplication.class, args);
+        SpringApplication.run(KySpringBootApplication.class, args);
     }
 }
