@@ -20,6 +20,8 @@ public enum ResultCode implements StatusCode {
     VALID_DATA(1002, "参数校验错误"),
 
     RUNTIME_ERROR(1003, "运行时异常"),
+
+    SQL_ERROR(1004, "数据库异常"),
     ;
 
     /**

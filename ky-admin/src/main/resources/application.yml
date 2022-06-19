@@ -4,3 +4,5 @@ spring:
     url: jdbc:mysql://localhost:3306/ky_sys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: lwz7254591
+server:
+  port: 8081

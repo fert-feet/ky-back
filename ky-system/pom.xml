@@ -24,6 +24,12 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!--通用模块-->
+        <dependency>
+            <groupId>com.ky</groupId>
+            <artifactId>ky-common</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

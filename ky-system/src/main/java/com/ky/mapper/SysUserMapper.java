@@ -1,7 +1,8 @@
 package com.ky.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ky.domain.SysTest;
+import com.ky.domain.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.ky.domain.SysTest;
  * @author KY
  * @since 2022-06-19
  */
-public interface SysTestMapper extends BaseMapper<SysTest> {
+@Mapper
+public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }

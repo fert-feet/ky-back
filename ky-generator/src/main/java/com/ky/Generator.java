@@ -3,9 +3,7 @@ package com.ky;/**
  */
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.config.OutputFile;
-
-import java.util.Collections;
+import com.baomidou.mybatisplus.generator.config.TemplateType;
 
 /**
  * @author: Ky2Fe
@@ -23,13 +21,17 @@ public class Generator {
 
     public static void main(String[] args) {
         generator();
+        controllerGenerator();
     }
 
+    /**
+     * 除了controller以外的生成器
+     */
     private static void generator() {
         FastAutoGenerator.create(URL, USER_NAME, PASS_WORD)
                 .globalConfig(builder -> {
                     builder.author("KY") // 设置作者
-                            .fileOverride() // 覆盖已生成文件
+                            .fileOverride()
                             .outputDir("D:\\Project\\JAVA\\admin\\ky-vue-background\\ky-system\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
@@ -38,14 +40,47 @@ public class Generator {
                             .service("service")
                             .serviceImpl("service.impl")
                             .mapper("mapper")
-                            .controller("web")
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D:\\Project\\JAVA\\admin\\ky-vue-background\\ky-system\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
+                            .xml("mapper.xml")
+                            .controller("web");
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("sys_test") // 设置需要生成的表名
+                    builder.addInclude("sys_user,sys_test") // 设置需要生成的表名
                             .addTablePrefix("t_", "c_")
                             .entityBuilder()
-                            .enableLombok(); // 设置过滤表前缀
+                            .enableLombok()
+                            .mapperBuilder()
+                            .enableMapperAnnotation();
+                })
+                .templateConfig(builder -> {
+                    builder.disable(TemplateType.CONTROLLER);
+                })
+                .execute();
+    }
+
+    /**
+     * controller生成器
+     */
+    private static void controllerGenerator() {
+        FastAutoGenerator.create(URL, USER_NAME, PASS_WORD)
+                .globalConfig(builder -> {
+                    builder.author("KY") // 设置作者
+                            .fileOverride()
+                            .outputDir("D:\\Project\\JAVA\\admin\\ky-vue-background\\ky-admin\\src\\main\\java"); // 指定输出目录
+                })
+                .packageConfig(builder -> {
+                    builder.parent("com.ky") // 设置父包名
+                            .controller("web");
+                })
+                .strategyConfig(builder -> {
+                    builder.addInclude("sys_user") // 设置需要生成的表名
+                            .addTablePrefix("t_", "c_")
+                            .entityBuilder()
+                            .enableLombok()
+                            .controllerBuilder()
+                            .enableRestStyle(); // 设置过滤表前缀
+                })
+                .templateConfig(builder -> {
+                    builder.disable(TemplateType.SERVICE, TemplateType.MAPPER, TemplateType.ENTITY, TemplateType.SERVICEIMPL, TemplateType.XML);
                 })
                 .execute();
     }

@@ -54,28 +54,6 @@ public class ResultVo {
     }
 
     /**
-     * 自定义状态码
-     *
-     * @param code
-     * @return this
-     */
-    public ResultVo code(Integer code) {
-        this.setCode(code);
-        return this;
-    }
-
-    /**
-     * 自定义信息
-     *
-     * @param msg
-     * @return this
-     */
-    public ResultVo msg(String msg) {
-        this.setMsg(msg);
-        return this;
-    }
-
-    /**
      * 自定义状态，使用枚举类里的状态和状态码
      *
      * @param status

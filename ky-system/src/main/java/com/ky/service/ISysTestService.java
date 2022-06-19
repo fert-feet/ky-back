@@ -9,7 +9,7 @@ import com.ky.domain.SysTest;
  * </p>
  *
  * @author KY
- * @since 2022-06-14
+ * @since 2022-06-19
  */
 public interface ISysTestService extends IService<SysTest> {
 
