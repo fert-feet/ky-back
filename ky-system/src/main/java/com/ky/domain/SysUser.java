@@ -48,7 +48,7 @@ public class SysUser implements Serializable {
     /**
      * 电话号码
      */
-    private String iphoneNumber;
+    private String phoneNumber;
 
     /**
      * 邮箱

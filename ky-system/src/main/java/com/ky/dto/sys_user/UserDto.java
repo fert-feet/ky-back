@@ -36,7 +36,7 @@ public class UserDto implements Serializable {
      * 电话号码
      */
     @NotNull
-    private String iphoneNumber;
+    private String phoneNumber;
 
     /**
      * 邮箱

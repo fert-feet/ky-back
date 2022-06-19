@@ -35,7 +35,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUser.setNickName(user.getNickName());
         sysUser.setUserName(user.getUserName());
         sysUser.setPassWord(user.getPassWord());
-        sysUser.setIphoneNumber(user.getIphoneNumber());
+        sysUser.setPhoneNumber(user.getPhoneNumber());
         sysUser.setEmail(user.getEmail());
         sysUser.setAddress(sysUser.getAddress());
         if (userMapper.insert(sysUser) < 1) {
@@ -51,7 +51,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         sysUser.setNickName(user.getNickName());
         sysUser.setUserName(user.getUserName());
         sysUser.setPassWord(user.getPassWord());
-        sysUser.setIphoneNumber(user.getIphoneNumber());
+        sysUser.setPhoneNumber(user.getIphoneNumber());
         sysUser.setEmail(user.getEmail());
         sysUser.setAddress(sysUser.getAddress());
         if (userMapper.updateById(sysUser) < 1) {
