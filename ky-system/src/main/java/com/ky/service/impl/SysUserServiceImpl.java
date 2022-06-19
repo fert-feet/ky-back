@@ -1,6 +1,8 @@
 package com.ky.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ky.domain.SysUser;
 import com.ky.dto.sys_user.UpdateUserDto;
@@ -68,5 +70,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         userMapper.deleteById(id);
         return ResultVo.error().status(ResultCode.SQL_ERROR);
+    }
+
+    @Override
+    public ResultVo pageIndex(int currentNum, int pageSize) {
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+        Page<SysUser> page = new Page<>(currentNum, pageSize);
+        IPage<SysUser> iPage = userMapper.selectPage(page, wrapper);
+        return ResultVo.success().data("userInfo", iPage.getRecords()).data("total", iPage.getTotal());
     }
 }

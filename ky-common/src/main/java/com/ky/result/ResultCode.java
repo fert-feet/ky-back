@@ -22,6 +22,8 @@ public enum ResultCode implements StatusCode {
     RUNTIME_ERROR(1003, "运行时异常"),
 
     SQL_ERROR(1004, "数据库异常"),
+
+    HTTP_ERROR(1005, "HTTP异常"),
     ;
 
     /**

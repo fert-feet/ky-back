@@ -39,4 +39,13 @@ public interface ISysUserService extends IService<SysUser> {
      * @return
      */
     ResultVo delete(int id);
+
+    /**
+     * 分页查询用户
+     *
+     * @param currentNum
+     * @param pageSize
+     * @return
+     */
+    ResultVo pageIndex(int currentNum, int pageSize);
 }

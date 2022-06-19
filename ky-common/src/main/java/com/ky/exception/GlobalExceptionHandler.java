@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.servlet.ServletException;
+
 /**
  * @author: Ky2Fe
  * @program: ky-vue-background
@@ -50,7 +52,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 传入参数校验异常
+     * 处理传入参数校验异常
      *
      * @param e
      * @return
@@ -61,5 +63,19 @@ public class GlobalExceptionHandler {
         //获取错误信息
         log.error("传入参数校验异常---{}", e.getMessage());
         return ResultVo.error().status(ResultCode.VALID_DATA);
+    }
+
+    /**
+     * 处理HTTP异常
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = ServletException.class)
+    @ResponseBody
+    public ResultVo servletExceptionHandler(ServletException e) {
+        //获取错误信息
+        log.error("HTTP异常---{}", e.getMessage());
+        return ResultVo.error().status(ResultCode.HTTP_ERROR);
     }
 }
