@@ -64,6 +64,12 @@
 
     <dependencies>
 
+        <!-- springboot 模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
         <!-- mybatis模块 -->
         <dependency>
             <groupId>com.baomidou</groupId>

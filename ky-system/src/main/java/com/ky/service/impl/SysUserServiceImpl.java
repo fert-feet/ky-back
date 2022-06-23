@@ -12,6 +12,7 @@ import com.ky.result.ResultCode;
 import com.ky.result.ResultVo;
 import com.ky.service.ISysUserService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -73,8 +74,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     }
 
     @Override
-    public ResultVo pageIndex(int currentNum, int pageSize) {
+    public ResultVo pageIndex(int currentNum, int pageSize, String userName, String nickName) {
         LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+        //判断查询值是否为空
+        if (StringUtils.hasLength(userName) || StringUtils.hasLength(nickName)) {
+            wrapper.like(SysUser::getUserName, userName).like(SysUser::getNickName, nickName);
+        }
         Page<SysUser> page = new Page<>(currentNum, pageSize);
         IPage<SysUser> iPage = userMapper.selectPage(page, wrapper);
         return ResultVo.success().data("userInfo", iPage.getRecords()).data("total", iPage.getTotal());

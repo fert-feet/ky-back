@@ -41,11 +41,10 @@ public interface ISysUserService extends IService<SysUser> {
     ResultVo delete(int id);
 
     /**
-     * 分页查询用户
+     * 分页查找
      *
-     * @param currentNum
-     * @param pageSize
-     * @return
+     * @Param: [currentNum, pageSize, userName, nickName]
+     * @Return: com.ky.result.ResultVo
      */
-    ResultVo pageIndex(int currentNum, int pageSize);
+    ResultVo pageIndex(int currentNum, int pageSize, String userName, String nickName);
 }

@@ -30,8 +30,11 @@ public class SysUserController {
      * @return
      */
     @GetMapping("/index")
-    public ResultVo index(@RequestParam int currentNum, @RequestParam int pageSize) {
-        return userService.pageIndex(currentNum, pageSize);
+    public ResultVo index(@RequestParam int currentNum,
+                          @RequestParam int pageSize,
+                          @RequestParam(defaultValue = "") String userName,
+                          @RequestParam(defaultValue = "") String nickName) {
+        return userService.pageIndex(currentNum, pageSize, userName, nickName);
     }
 
     /**
