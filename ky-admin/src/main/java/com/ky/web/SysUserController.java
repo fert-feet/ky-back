@@ -1,7 +1,7 @@
 package com.ky.web;
 
-import com.ky.dto.sys_user.UpdateUserDto;
-import com.ky.dto.sys_user.UserDto;
+import com.ky.dto.sysuser.UpdateUserDto;
+import com.ky.dto.sysuser.UserDto;
 import com.ky.result.ResultVo;
 import com.ky.service.ISysUserService;
 import org.springframework.validation.annotation.Validated;

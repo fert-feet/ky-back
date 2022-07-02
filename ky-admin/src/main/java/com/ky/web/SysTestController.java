@@ -25,11 +25,7 @@ public class SysTestController {
     @Resource
     private ISysTestService testService;
 
-    /**
-     * 测试
-     *
-     * @return
-     */
+
     @GetMapping("/get")
     public ResultVo test() {
         return ResultVo.success().data("userInfo", testService.getById(1));

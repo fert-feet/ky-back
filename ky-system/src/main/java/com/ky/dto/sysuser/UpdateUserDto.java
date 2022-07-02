@@ -1,4 +1,4 @@
-package com.ky.dto.sys_user;
+package com.ky.dto.sysuser;
 
 import lombok.Data;
 
@@ -8,45 +8,42 @@ import java.io.Serializable;
 /**
  * @author: Ky2Fe
  * @program: ky-vue-background
- * @description: 创建用户DTO
+ * @description: 用户更新
  **/
 
 @Data
-public class UserDto implements Serializable {
+public class UpdateUserDto implements Serializable {
+
+    @NotNull
+    private Integer id;
 
     /**
      * 用户昵称
      */
-    @NotNull()
     private String nickName;
 
     /**
      * 用户名
      */
-    @NotNull
     private String userName;
 
     /**
      * 密码
      */
-    @NotNull
     private String passWord;
 
     /**
      * 电话号码
      */
-    @NotNull
-    private String phoneNumber;
+    private String iphoneNumber;
 
     /**
      * 邮箱
      */
-    @NotNull
     private String email;
 
     /**
      * 地址
      */
-    @NotNull
     private String address;
 }

@@ -5,12 +5,13 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ky.domain.SysUser;
-import com.ky.dto.sys_user.UpdateUserDto;
-import com.ky.dto.sys_user.UserDto;
+import com.ky.dto.sysuser.UpdateUserDto;
+import com.ky.dto.sysuser.UserDto;
 import com.ky.mapper.SysUserMapper;
 import com.ky.result.ResultCode;
 import com.ky.result.ResultVo;
 import com.ky.service.ISysUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -24,6 +25,7 @@ import javax.annotation.Resource;
  * @author KY
  * @since 2022-06-19
  */
+@Slf4j
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 
@@ -75,11 +77,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public ResultVo pageIndex(int currentNum, int pageSize, String userName, String nickName) {
+        //lambda查询工具类
         LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
-        //判断查询值是否为空
         if (StringUtils.hasLength(userName) || StringUtils.hasLength(nickName)) {
+            //模糊查询
             wrapper.like(SysUser::getUserName, userName).like(SysUser::getNickName, nickName);
         }
+        //使用Page类查询
         Page<SysUser> page = new Page<>(currentNum, pageSize);
         IPage<SysUser> iPage = userMapper.selectPage(page, wrapper);
         return ResultVo.success().data("userInfo", iPage.getRecords()).data("total", iPage.getTotal());

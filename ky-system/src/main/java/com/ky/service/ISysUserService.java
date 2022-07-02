@@ -2,8 +2,8 @@ package com.ky.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ky.domain.SysUser;
-import com.ky.dto.sys_user.UpdateUserDto;
-import com.ky.dto.sys_user.UserDto;
+import com.ky.dto.sysuser.UpdateUserDto;
+import com.ky.dto.sysuser.UserDto;
 import com.ky.result.ResultVo;
 
 /**
@@ -35,8 +35,8 @@ public interface ISysUserService extends IService<SysUser> {
     /**
      * 删除用户
      *
-     * @param id
-     * @return
+     * @Param: [id]
+     * @Return: com.ky.result.ResultVo
      */
     ResultVo delete(int id);
 
