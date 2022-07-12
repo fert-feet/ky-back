@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ky.domain.SysUser;
-import com.ky.dto.sysuser.UpdateUserDto;
 import com.ky.dto.sysuser.UserDto;
 import com.ky.mapper.SysUserMapper;
 import com.ky.result.ResultCode;
@@ -35,28 +34,33 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public ResultVo create(UserDto user) {
         SysUser sysUser = new SysUser();
-        sysUser.setNickName(user.getNickName());
-        sysUser.setUserName(user.getUserName());
-        sysUser.setPassWord(user.getPassWord());
-        sysUser.setPhoneNumber(user.getPhoneNumber());
-        sysUser.setEmail(user.getEmail());
-        sysUser.setAddress(sysUser.getAddress());
+        setUser(user, sysUser);
         if (userMapper.insert(sysUser) < 1) {
             return ResultVo.error().status(ResultCode.SQL_ERROR);
         }
         return ResultVo.success().data("id", sysUser.getId());
     }
 
-    @Override
-    public ResultVo update(UpdateUserDto user) {
-        SysUser sysUser = new SysUser();
-        sysUser.setId(user.getId());
+    /**
+     * 用于setUser，后续应该更改
+     *
+     * @Param: [user, sysUser]
+     * @Return: void
+     */
+    private void setUser(UserDto user, SysUser sysUser) {
         sysUser.setNickName(user.getNickName());
         sysUser.setUserName(user.getUserName());
         sysUser.setPassWord(user.getPassWord());
-        sysUser.setPhoneNumber(user.getIphoneNumber());
+        sysUser.setPhoneNumber(user.getPhoneNumber());
         sysUser.setEmail(user.getEmail());
         sysUser.setAddress(sysUser.getAddress());
+    }
+
+    @Override
+    public ResultVo update(UserDto user) {
+        SysUser sysUser = new SysUser();
+        sysUser.setId(user.getId());
+        setUser(user, sysUser);
         if (userMapper.updateById(sysUser) < 1) {
             return ResultVo.error().status(ResultCode.SQL_ERROR);
         }

@@ -1,6 +1,5 @@
 package com.ky.web;
 
-import com.ky.dto.sysuser.UpdateUserDto;
 import com.ky.dto.sysuser.UserDto;
 import com.ky.result.ResultVo;
 import com.ky.service.ISysUserService;
@@ -55,7 +54,7 @@ public class SysUserController {
      * @return
      */
     @PatchMapping("/update")
-    public ResultVo update(@RequestBody @Validated UpdateUserDto user) {
+    public ResultVo update(@RequestBody @Validated UserDto user) {
         return userService.update(user);
     }
 

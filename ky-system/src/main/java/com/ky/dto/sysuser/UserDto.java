@@ -15,6 +15,11 @@ import java.io.Serializable;
 public class UserDto implements Serializable {
 
     /**
+     * 用户id
+     */
+    private Integer id;
+
+    /**
      * 用户昵称
      */
     @NotBlank

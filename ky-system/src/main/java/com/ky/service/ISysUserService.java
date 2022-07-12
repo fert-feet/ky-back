@@ -2,7 +2,6 @@ package com.ky.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ky.domain.SysUser;
-import com.ky.dto.sysuser.UpdateUserDto;
 import com.ky.dto.sysuser.UserDto;
 import com.ky.result.ResultVo;
 
@@ -30,7 +29,7 @@ public interface ISysUserService extends IService<SysUser> {
      * @param user
      * @return
      */
-    ResultVo update(UpdateUserDto user);
+    ResultVo update(UserDto user);
 
     /**
      * 删除用户
